@@ -35,10 +35,10 @@ int main(int argc, char **argv)
 	}
 
 	GLfloat a[] = {
-		100.0f, 300.0f,
-		300.0f, 300.0f,
-		100.0f, 100.0f,
-		300.0f, 100.0f,
+		100.0f, 300.0f,  0.0f, 1.0f,
+		300.0f, 300.0f,  1.0f, 1.0f,
+		100.0f, 100.0f,  0.0f, 0.0f,
+		300.0f, 100.0f,  1.0f, 0.0f,
 	};
 
 	GLuint b[] = {
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 		1, 2, 3,
 	};
 
-	Renderable *r1 = new Renderable(sizeof(a), a, sizeof(b), b, 6);
+	Renderable *r1 = new Renderable(sizeof(a), a, sizeof(b), b, 6, "texture.png");
 	Renderer ren;
 
 	glViewport(0, 0, 400, 400);
