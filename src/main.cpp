@@ -4,6 +4,8 @@
 
 int main(void)
 {
+	GLFWwindow *window = InitWindow();
+	if (!window) return -1;
 	Renderer renderer;
-	return displayWindow(renderer);
+	return DisplayWindow(window, renderer);
 };

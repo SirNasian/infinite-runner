@@ -3,23 +3,37 @@
 #include <GLFW/glfw3.h>
 #include "renderer.h"
 
-inline int displayWindow(Renderer renderer)
+#include <iostream>
+
+inline GLFWwindow* InitWindow()
 {
 	GLFWwindow *window;
-	double time_delta = 0.0f;
-	double time_last  = 0.0f;
-
-	if (!glfwInit())
-		return -1;
+	if (!glfwInit()) return NULL;
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-
-	if (!window) {
+	if (!window)
+	{
 		glfwTerminate();
-		return -1;
+		return NULL;
 	};
 
 	glfwMakeContextCurrent(window);
+	if (glewInit() != GLEW_OK)
+	{
+		glfwTerminate();
+		return NULL;
+	}
+
+	return window;
+};
+
+inline int DisplayWindow(GLFWwindow *window, Renderer renderer)
+{
+	double time_delta = 0.0f;
+	double time_last  = 0.0f;
 
 	while (!glfwWindowShouldClose(window))
 	{
