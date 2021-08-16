@@ -1,6 +1,14 @@
 #pragma once
+#include "shader.h"
 
-class Renderable {
+class Renderable
+{
+	private:
+		unsigned int vao;
+		unsigned int vbo;
+		Shader *shader;
 	public:
-		Renderable();
+		Renderable(Shader *shader);
+		Shader* GetShader() { return this->shader; };
+		unsigned int GetVAO() { return this->vao; };
 };
