@@ -11,5 +11,5 @@ int main(void)
 	Renderable renderable(&shader);
 	Renderer renderer;
 	renderer.RegisterRenderable(&renderable);
-	return DisplayWindow(window, renderer);
+	return DisplayWindow(window, &renderer);
 };
