@@ -11,3 +11,5 @@ class Shader
 		~Shader();
 		unsigned int GetProgram();
 };
+
+Shader ConstructSimpleShader();
