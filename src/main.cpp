@@ -3,13 +3,19 @@
 #include "../include/renderer.hpp"
 #include "../include/shader.hpp"
 
+#include <iostream>
+
 int main(void)
 {
 	GLFWwindow *window = InitWindow();
 	if (!window) return -1;
 	Shader shader = ConstructSimpleShader();
-	Renderable renderable(&shader);
 	Renderer renderer;
-	renderer.RegisterRenderable(&renderable);
+	Renderable r(&shader);
+	for (int c = 0; c < 20000; c++)
+	{
+		renderer.RegisterRenderable(new Renderable(&shader, r.GetVAO()));
+		std::cout << c+1 << std::endl;
+	}
 	return DisplayWindow(window, &renderer);
 };
