@@ -32,9 +32,11 @@ Shader ConstructSimpleShader()
 	const char *vertexShaderSource = "#version 330 core\n"
 		"layout (location = 0) in vec2 aPos;\n"
 		"uniform mat4 uModel;\n"
+		"uniform mat4 uView;\n"
+		"uniform mat4 uProjection;\n"
 		"void main()\n"
 		"{\n"
-		"   gl_Position = uModel * vec4(aPos, 0.0, 1.0);\n"
+		"   gl_Position = uProjection * uView * uModel * vec4(aPos, 0.0, 1.0);\n"
 		"}\0";
 	const char *fragmentShaderSource = "#version 330 core\n"
 		"out vec4 FragColor;\n"

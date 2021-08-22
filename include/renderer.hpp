@@ -6,7 +6,8 @@ class Renderer
 {
 	private:
 		std::list<Renderable*> renderables;
-		unsigned int fps = 60;
+		unsigned int fps;
+		float pos_x, pos_y, view_width, view_height;
 	public:
 		Renderer();
 		void Render(double time_delta);
