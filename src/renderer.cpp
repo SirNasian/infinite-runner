@@ -1,8 +1,8 @@
 #include <GL/glew.h>
 #include <list>
-#include "renderer.h"
-#include "renderable.h"
-#include "shader.h"
+#include "../include/renderer.hpp"
+#include "../include/renderable.hpp"
+#include "../include/shader.hpp"
 
 Renderer::Renderer()
 {

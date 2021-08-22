@@ -1,5 +1,5 @@
 #include <GL/glew.h>
-#include "shader.h"
+#include "../include/shader.hpp"
 
 Shader::Shader(const char *source_vertex, const char *source_fragment)
 {
@@ -25,11 +25,6 @@ unsigned int Shader::CompileShader(const char *source, GLenum shader_type)
 	glCompileShader(shader);
 	// TODO: error handling
 	return shader;
-};
-
-unsigned int Shader::GetProgram()
-{
-	return this->program;
 };
 
 Shader ConstructSimpleShader()

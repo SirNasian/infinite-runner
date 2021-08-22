@@ -1,13 +1,15 @@
-#pragma once
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "renderer.h"
+#include "../include/renderer.hpp"
 
 #include <iostream>
 
-inline void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
+}
 
-inline GLFWwindow* InitWindow()
+GLFWwindow* InitWindow()
 {
 	GLFWwindow *window;
 	if (!glfwInit()) return NULL;
@@ -34,7 +36,7 @@ inline GLFWwindow* InitWindow()
 	return window;
 };
 
-inline int DisplayWindow(GLFWwindow *window, Renderer *renderer)
+int DisplayWindow(GLFWwindow *window, Renderer *renderer)
 {
 	double time_delta = 0.0f;
 	double time_last  = 0.0f;
@@ -58,8 +60,3 @@ inline int DisplayWindow(GLFWwindow *window, Renderer *renderer)
 	glfwTerminate();
 	return 0;
 };
-
-inline void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
-	glViewport(0, 0, width, height);
-}

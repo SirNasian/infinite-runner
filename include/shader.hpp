@@ -9,7 +9,7 @@ class Shader
 	public:
 		Shader(const char *vertexSource, const char *fragmentSource);
 		~Shader();
-		unsigned int GetProgram();
+		unsigned int GetProgram() { return this->program; };
 };
 
 Shader ConstructSimpleShader();

@@ -2,7 +2,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "renderable.h"
+#include "../include/renderable.hpp"
+#include "../include/shader.hpp"
 
 Renderable::Renderable(Shader *shader)
 {

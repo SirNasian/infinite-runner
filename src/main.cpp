@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "window.h"
-#include "renderer.h"
-#include "shader.h"
+#include "../include/window.hpp"
+#include "../include/renderer.hpp"
+#include "../include/shader.hpp"
 
 int main(void)
 {
