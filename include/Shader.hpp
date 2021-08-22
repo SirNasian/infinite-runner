@@ -12,4 +12,4 @@ class Shader
 		unsigned int GetProgram() { return this->program; };
 };
 
-Shader ConstructSimpleShader();
+Shader* ConstructSimpleShader();

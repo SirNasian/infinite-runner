@@ -19,7 +19,7 @@ Renderer::Renderer()
 void Renderer::Render(double time_delta)
 {
 	glm::mat4 mat_view = glm::translate(glm::mat4(1.0f), glm::vec3(-this->pos_x, -this->pos_y, 0.0f));
-	glm::mat4 mat_projection = glm::ortho(0.0f, this->view_width, 0.0f, this->view_height, 0.0f, 1.0f);
+	glm::mat4 mat_projection = glm::ortho(0.0f, this->view_width, this->view_height, 0.0f, 0.0f, 1.0f);
 	std::list<Renderable*>::iterator renderable;
 	for (renderable = this->renderables.begin(); renderable != this->renderables.end(); renderable++)
 		(*renderable)->Render(mat_view, mat_projection);

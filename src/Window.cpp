@@ -1,6 +1,6 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "../include/Renderer.hpp"
+#include "../include/GameController.hpp"
 
 #include <iostream>
 
@@ -36,24 +36,29 @@ GLFWwindow* InitWindow()
 	return window;
 };
 
-int DisplayWindow(GLFWwindow *window, Renderer *renderer)
+int DisplayWindow(GLFWwindow *window, GameController *controller)
 {
-	double time_delta = 0.0f;
-	double time_last  = 0.0f;
+	double time_delta_update = 0.0f;
+	double time_delta_render = 0.0f;
+	double time_last_update  = 0.0f;
+	double time_last_render  = 0.0f;
 
-	renderer->SetFPS(144);
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	while (!glfwWindowShouldClose(window))
 	{
-		time_delta = glfwGetTime() - time_last;
-		if (renderer->ShouldRender(time_delta))
+		time_delta_update = glfwGetTime() - time_last_update;
+		controller->Update(time_delta_update);
+
+		time_delta_render = glfwGetTime() - time_last_render;
+		if (controller->GetRenderer()->ShouldRender(time_delta_render))
 		{
 			glClear(GL_COLOR_BUFFER_BIT);
-			renderer->Render(time_delta);
+			controller->GetRenderer()->Render(time_delta_render);
 			glfwSwapBuffers(window);
-			time_last = glfwGetTime();
-			std::cout << "RENDER (" << 1.0f / time_delta << " FPS)" << std::endl;
+			time_last_render = glfwGetTime();
+			std::cout << "RENDER (" << 1.0f / time_delta_render << " FPS)" << std::endl;
 		};
+		time_last_update = glfwGetTime();
 		glfwPollEvents();
 	};
 

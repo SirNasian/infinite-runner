@@ -27,7 +27,7 @@ unsigned int Shader::CompileShader(const char *source, GLenum shader_type)
 	return shader;
 };
 
-Shader ConstructSimpleShader()
+Shader* ConstructSimpleShader()
 {
 	const char *vertexShaderSource = "#version 330 core\n"
 		"layout (location = 0) in vec2 aPos;\n"
@@ -44,5 +44,5 @@ Shader ConstructSimpleShader()
 		"{\n"
 		"    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
 		"}\0";
-	return Shader(vertexShaderSource, fragmentShaderSource);
+	return new Shader(vertexShaderSource, fragmentShaderSource);
 };
