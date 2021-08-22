@@ -3,9 +3,9 @@
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <list>
-#include "../include/renderer.hpp"
-#include "../include/renderable.hpp"
-#include "../include/shader.hpp"
+#include "../include/Renderer.hpp"
+#include "../include/Renderable.hpp"
+#include "../include/Shader.hpp"
 
 Renderer::Renderer()
 {

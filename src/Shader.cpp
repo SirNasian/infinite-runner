@@ -1,5 +1,5 @@
 #include <GL/glew.h>
-#include "../include/shader.hpp"
+#include "../include/Shader.hpp"
 
 Shader::Shader(const char *source_vertex, const char *source_fragment)
 {

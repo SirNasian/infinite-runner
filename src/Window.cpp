@@ -1,6 +1,6 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "../include/renderer.hpp"
+#include "../include/Renderer.hpp"
 
 #include <iostream>
 

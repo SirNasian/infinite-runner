@@ -2,8 +2,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "../include/renderable.hpp"
-#include "../include/shader.hpp"
+#include "../include/Renderable.hpp"
+#include "../include/Shader.hpp"
 
 Renderable::Renderable(Shader *shader, unsigned int vao)
 {
