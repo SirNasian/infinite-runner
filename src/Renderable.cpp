@@ -32,39 +32,20 @@ Renderable::Renderable(Shader *shader, unsigned int vao)
 
 void Renderable::Render(glm::mat4 mat_view, glm::mat4 mat_projection)
 {
-	glUseProgram(this->GetShader()->GetProgram());
-	this->UpdateModelUniform();
-	this->UpdateViewUniform(mat_view);
-	this->UpdateProjectionUniform(mat_projection);
+	this->shader->UseProgram();
+	this->shader->SetMat4("uModel", this->CalculateModelMatrix());
+	this->shader->SetMat4("uView", mat_view);
+	this->shader->SetMat4("uProjection", mat_projection);
 	glBindVertexArray(this->vao);
 	// TODO: consider defining a flexible number of vertices
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 };
 
-void Renderable::UpdateModelUniform()
+glm::mat4 Renderable::CalculateModelMatrix()
 {
 	glm::mat4 mat_model;
-	unsigned int loc_model;
 	mat_model = glm::mat4(1.0f);
 	mat_model = glm::translate(mat_model, glm::vec3(this->GetPosX(), this->GetPosY(), 0.0f));
 	mat_model = glm::scale(mat_model, glm::vec3(this->size_width, this->size_height, 0.0f));
-	loc_model = glGetUniformLocation(this->GetShader()->GetProgram(), "uModel");
-	// NOTE: this function assumes that `glUseProgram` has already been set
-	glUniformMatrix4fv(loc_model, 1, GL_FALSE, glm::value_ptr(mat_model));
-};
-
-void Renderable::UpdateViewUniform(glm::mat4 mat_view)
-{
-	unsigned int loc_view;
-	loc_view = glGetUniformLocation(this->GetShader()->GetProgram(), "uView");
-	// NOTE: this function assumes that `glUseProgram` has already been set
-	glUniformMatrix4fv(loc_view, 1, GL_FALSE, glm::value_ptr(mat_view));
-};
-
-void Renderable::UpdateProjectionUniform(glm::mat4 mat_projection)
-{
-	unsigned int loc_projection;
-	loc_projection = glGetUniformLocation(this->GetShader()->GetProgram(), "uProjection");
-	// NOTE: this function assumes that `glUseProgram` has already been set
-	glUniformMatrix4fv(loc_projection, 1, GL_FALSE, glm::value_ptr(mat_projection));
+	return mat_model;
 };

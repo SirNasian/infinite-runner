@@ -18,6 +18,13 @@ Shader::~Shader()
 {
 };
 
+void Shader::SetMat4(const char *name, glm::mat4 value)
+{
+	unsigned int uniform_location;
+	uniform_location = glGetUniformLocation(this->program, name);
+	glUniformMatrix4fv(uniform_location, 1, GL_FALSE, glm::value_ptr(value));
+};
+
 unsigned int Shader::CompileShader(const char *source, GLenum shader_type)
 {
 	unsigned int shader = glCreateShader(shader_type);

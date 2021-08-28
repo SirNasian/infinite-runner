@@ -9,9 +9,7 @@ class Renderable
 		Shader *shader;
 		unsigned int vao, vbo;
 		float pos_x, pos_y, size_width, size_height;
-		void UpdateModelUniform();
-		void UpdateViewUniform(glm::mat4 mat_view);
-		void UpdateProjectionUniform(glm::mat4 mat_projection);
+		glm::mat4 CalculateModelMatrix();
 	public:
 		Renderable(Shader *shader, unsigned int vao = -1);
 		Shader* GetShader() { return this->shader; };
